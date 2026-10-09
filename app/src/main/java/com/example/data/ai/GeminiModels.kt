@@ -5,35 +5,35 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class GeminiRequest(
-    @Json(name = "contents") val contents: List<GeminiContent>,
-    @Json(name = "generationConfig") val generationConfig: GeminiGenerationConfig? = null,
-    @Json(name = "systemInstruction") val systemInstruction: GeminiContent? = null
+    @param:Json(name = "contents") val contents: List<GeminiContent>,
+    @param:Json(name = "generationConfig") val generationConfig: GeminiGenerationConfig? = null,
+    @param:Json(name = "systemInstruction") val systemInstruction: GeminiContent? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class GeminiContent(
-    @Json(name = "parts") val parts: List<GeminiPart>
+    @param:Json(name = "parts") val parts: List<GeminiPart>
 )
 
 @JsonClass(generateAdapter = true)
 data class GeminiPart(
-    @Json(name = "text") val text: String? = null
+    @param:Json(name = "text") val text: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class GeminiGenerationConfig(
-    @Json(name = "temperature") val temperature: Float = 0.2f,
-    @Json(name = "responseMimeType") val responseMimeType: String? = null
+    @param:Json(name = "temperature") val temperature: Float = 0.2f,
+    @param:Json(name = "responseMimeType") val responseMimeType: String? = null
 )
 
 @JsonClass(generateAdapter = true)
 data class GeminiResponse(
-    @Json(name = "candidates") val candidates: List<GeminiCandidate>?
+    @param:Json(name = "candidates") val candidates: List<GeminiCandidate>?
 )
 
 @JsonClass(generateAdapter = true)
 data class GeminiCandidate(
-    @Json(name = "content") val content: GeminiContent?
+    @param:Json(name = "content") val content: GeminiContent?
 )
 
 data class ParsedTaskResult(
