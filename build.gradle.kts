@@ -12,7 +12,8 @@ val debugKeystore = file("${rootDir}/debug.keystore")
 val base64Keystore = file("${rootDir}/debug.keystore.base64")
 if (!debugKeystore.exists() && base64Keystore.exists()) {
   try {
-    val decoded = java.util.Base64.getDecoder().decode(base64Keystore.readText().trim())
+    val cleanBase64 = base64Keystore.readText().replace("\\s+".toRegex(), "")
+    val decoded = java.util.Base64.getDecoder().decode(cleanBase64)
     debugKeystore.writeBytes(decoded)
   } catch (_: Exception) {}
 }

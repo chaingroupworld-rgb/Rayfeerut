@@ -34,6 +34,10 @@ jobs:
         if [ -f debug.keystore.base64 ]; then
           base64 -d debug.keystore.base64 > debug.keystore
         fi
+        if [ ! -f debug.keystore ]; then
+          keytool -genkeypair -alias androiddebugkey -keypass android -keystore debug.keystore -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 10000 -keyalg RSA -keysize 2048
+        fi
+        ls -la debug.keystore
 
     - name: Build Debug APK
       run: ./gradlew assembleDebug --stacktrace
